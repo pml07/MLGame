@@ -1,0 +1,7 @@
+*.pyc
+/__pycache__
+/log
+/units
+src/coin_rank.py
+asset/image/car/
+game_draw_example
