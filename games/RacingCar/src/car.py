@@ -18,21 +18,21 @@ class Car(pygame.sprite.Sprite):
         self.max_vel = random.randint(10, 14)
 
     def speedUp(self):
-        self.velocity += 0.02*(self.velocity**0.8)+0.04
+        self.velocity += 0.01*(self.velocity**0.6)+0.04
 
     def brakeDown(self):
-        self.velocity -= 0.05
+        self.velocity -= 0.2
 
     def slowDown(self):
         if self.velocity > 1:
             self.velocity -= 0.05
         elif 0 <= self.velocity < 0.9:
-            self.velocity += 0.1
+            self.velocity += 0.3
     def moveRight(self):
-        self.rect.centery += 5
+        self.rect.centery += 3
 
     def moveLeft(self):
-        self.rect.centery -= 5
+        self.rect.centery -= 3
 
     def keep_in_screen(self):
         if self.rect.left < -250 or self.rect.right > 1300 or self.rect.top < 100:
