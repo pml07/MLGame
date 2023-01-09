@@ -8,14 +8,15 @@ import numpy as np
 import pandas as pd
 
 
+
 class QLearningTable:
-    def __init__(self, actions, learning_rate=0.01, reward_decay=0.9, e_greedy=0.9):
+    def __init__(self, actions, learning_rate=0.1, reward_decay=0.9, e_greedy=0):
         self.actions = actions  # a list
         self.lr = learning_rate
         self.gamma = reward_decay
         self.epsilon = e_greedy
-    #    self.q_table = pd.DataFrame(columns=self.actions, dtype=np.float64)
-        self.q_table = pd.read_pickle('games/RacingCar/log/table0.pickle') 
+        # self.q_table = pd.DataFrame(columns=self.actions, dtype=np.float64)
+        self.q_table = pd.read_pickle('games/RacingCar/log/log_6.pickle') 
 
     def choose_action(self, observation):
         self.check_state_exist(observation)
@@ -43,10 +44,4 @@ class QLearningTable:
     def check_state_exist(self, state):
         if state not in self.q_table.index:
             # append new state to q table
-            self.q_table = self.q_table.append(
-                pd.Series(
-                    [0]*len(self.actions),
-                    index=self.q_table.columns,
-                    name=state,
-                )
-            )
+            self.q_table = self.q_table.append(pd.Series([0]*len(self.actions), index=self.q_table.columns, name=state))
