@@ -3,11 +3,11 @@ import pandas as pd
 
 class QLearningTable:
     def __init__(self, actions, learning_rate=0.1, reward_decay=0.9, e_greedy=0.9):
-        self.actions = actions  # a list
+        self.actions = actions
         self.lr = learning_rate
         self.gamma = reward_decay
         self.epsilon = e_greedy
-        self.q_table = pd.read_pickle('games/RacingCar/log/log.pickle')  # 若執行rl_play_9grids.py 請跑這行，將底下的註解
+        self.q_table = pd.read_pickle('games/RacingCar/log/log.pickle')
         
     def choose_action(self, observation):
         self.check_state_exist(observation)
@@ -16,10 +16,10 @@ class QLearningTable:
         if np.random.uniform() < self.epsilon:
             # choose best action
             state_action = self.q_table.loc[observation, :]
-            # some actions may have the same value, randomly choose on in these actions
+            # same value, randomly
             action = np.random.choice(state_action[state_action == np.max(state_action)].index)
         else:
-            # choose random action
+            # random
             action = np.random.choice(self.actions)
         return action
 
