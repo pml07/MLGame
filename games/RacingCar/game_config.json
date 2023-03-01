@@ -42,7 +42,7 @@
       "name": "rounds",
       "verbose": "遊戲局數",
       "type": "int",
-      "max": 30,
+      "max": 5000,
       "min": 1,
       "default": 1,
       "help": "set times for restarting game."

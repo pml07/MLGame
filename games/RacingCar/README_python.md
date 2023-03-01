@@ -6,9 +6,9 @@
 
 * 搭配[MLGame](https://github.com/LanKuDot/MLGame)執行，請將遊戲放在MLGame/games資料夾中，遊戲資料夾需命名為**RacingCar**
     * 手動模式：
-`python MLGame.py -m racing_car <the number of user> [game_mode] [car_num] [game_times] [sound]`
+`python MLGame.py -m RacingCar <the number of user> [game_mode] [car_num] [game_times] [sound]`
     * 機器學習模式：
-`python MLGame.py -i ml_play_template.py racing_car <the number of user> [game_mode] [car_num] [game_times] [sound]`
+`python MLGame.py -i ml_play_template.py RacingCar <the number of user> [game_mode] [car_num] [game_times] [sound]`
 
 ### 遊戲參數
 

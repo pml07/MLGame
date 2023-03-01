@@ -1,28 +1,19 @@
-"""
-This part of code is the Q learning brain, which is a brain of the agent.
-All decisions are made in here.
-View more on my tutorial page: https://morvanzhou.github.io/tutorials/
-"""
-
 import numpy as np
 import pandas as pd
 
-
-
 class QLearningTable:
-    def __init__(self, actions, learning_rate=0.1, reward_decay=0.9, e_greedy=0):
+    def __init__(self, actions, learning_rate=0.1, reward_decay=0.9, e_greedy=0.9):
         self.actions = actions  # a list
         self.lr = learning_rate
         self.gamma = reward_decay
         self.epsilon = e_greedy
-        # self.q_table = pd.DataFrame(columns=self.actions, dtype=np.float64)
-        self.q_table = pd.read_pickle('games/RacingCar/log/log_6.pickle') 
-
+        self.q_table = pd.read_pickle('games/RacingCar/log/log.pickle')  # 若執行rl_play_9grids.py 請跑這行，將底下的註解
+        
     def choose_action(self, observation):
         self.check_state_exist(observation)
 
         # action selection
-        if np.random.uniform() > self.epsilon:
+        if np.random.uniform() < self.epsilon:
             # choose best action
             state_action = self.q_table.loc[observation, :]
             # some actions may have the same value, randomly choose on in these actions
